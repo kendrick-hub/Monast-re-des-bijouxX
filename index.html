@@ -57,7 +57,6 @@
             <div class="flex items-center space-x-4">
                 <button onclick="showPage('boutique')" class="relative p-2">
                     <i data-lucide="shopping-bag" class="w-6 h-6"></i>
-                    <!-- Chiffre 3 supprimé ici -->
                 </button>
                 <button class="md:hidden" onclick="toggleMenu()"><i data-lucide="menu"></i></button>
             </div>
@@ -120,8 +119,7 @@
     <!-- PAGE BOUTIQUE -->
     <div id="page-boutique" class="hidden page py-12">
         <div class="max-w-7xl mx-auto px-4">
-            <h1 class="text-4xl font-serif font-bold text-center mb-4">La Galerie des Bijoux</h1>
-            <p id="current-category" class="text-center text-violet-600 font-bold uppercase tracking-widest mb-10 text-sm">Tous nos produits</p>
+            <h1 class="text-4xl font-serif font-bold text-center mb-10 uppercase tracking-widest">La Galerie des Bijoux</h1>
             
             <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                 <!-- Les produits seront injectés ici par JS -->
@@ -169,7 +167,7 @@
                 <a href="https://web.facebook.com/profile.php?id=61555902554014" target="_blank" class="hover:text-white">Facebook</a>
                 <a href="https://tiktok.com/@monastère des bijoux" target="_blank" class="hover:text-white">TikTok</a>
             </div>
-            <p class="text-[10px] text-gray-600 uppercase pt-8">&copy; 2024 Monastère des Bijoux. Tous droits réservés.</p>
+            <p class="text-[10px] text-gray-600 uppercase pt-8">&copy; 2025 Monastère des Bijoux. Tous droits réservés.</p>
         </div>
     </footer>
 
@@ -257,7 +255,6 @@
 
         function filterCategory(cat) {
             showPage('boutique');
-            document.getElementById('current-category').innerText = cat;
             const filtered = products.filter(p => p.category === cat);
             renderProducts(filtered);
         }
@@ -296,9 +293,9 @@
                             <p><b>Peau :</b> Hypoallergénique</p>
                         </div>
 
-                        <!-- Formulaire de commande mis à jour -->
+                        <!-- Formulaire de commande -->
                         <div class="bg-gray-900 text-white p-6 rounded-lg space-y-4">
-                            <h3 class="font-bold border-b border-white/20 pb-2">COMMANDER MAINTENANT</h3>
+                            <h3 class="font-bold border-b border-white/20 pb-2 uppercase tracking-widest text-sm">Passer ma commande</h3>
                             <div class="space-y-3">
                                 <input type="text" id="order-name" placeholder="Votre Nom Complet" class="w-full p-3 bg-white/10 border border-white/20 rounded outline-none focus:border-white">
                                 <input type="tel" id="order-whatsapp" placeholder="Votre Numéro WhatsApp" class="w-full p-3 bg-white/10 border border-white/20 rounded outline-none focus:border-white">
@@ -312,7 +309,6 @@
                                         <option value="Autre Ville (BF)" class="bg-gray-800">Autre Ville (BF)</option>
                                     </select>
 
-                                    <!-- Champ Quartier dynamique -->
                                     <input type="text" id="order-quartier" placeholder="Précisez votre quartier" class="w-full p-3 bg-white/10 border border-white/20 rounded outline-none focus:border-white">
                                 </div>
 
@@ -325,12 +321,11 @@
                                     </select>
                                 </div>
 
-                                <!-- Bouton Valider via WhatsApp pour simplifier -->
                                 <button onclick="sendOrder('${product.name}')" class="w-full bg-green-500 hover:bg-green-600 text-white py-4 rounded font-bold uppercase tracking-widest transition shadow-lg mt-4 flex items-center justify-center space-x-2">
                                     <i data-lucide="check-circle" class="w-5 h-5"></i>
                                     <span>Valider la commande</span>
                                 </button>
-                                <p class="text-[10px] text-center text-gray-400 italic">La validation ouvre directement une discussion WhatsApp avec nos agents.</p>
+                                <p class="text-[10px] text-center text-gray-400 italic">La validation ouvre une discussion WhatsApp directe.</p>
                             </div>
                         </div>
                     </div>
@@ -339,7 +334,6 @@
             lucide.createIcons();
         }
 
-        // Fonction pour gérer l'affichage ou l'adaptation selon la ville si besoin
         function toggleQuartier() {
             const loc = document.getElementById('order-loc').value;
             const qInput = document.getElementById('order-quartier');
